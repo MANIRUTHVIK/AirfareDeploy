@@ -1,0 +1,62 @@
+name: airfare-app
+
+services:
+  network-container:
+    container_name: airfare-network
+    image: alpine:latest
+    command: sh -c "while true; do sleep 3600; done"
+    networks:
+      - app-network
+    restart: unless-stopped
+  backend:
+    container_name: airfare-backend
+    hostname: airfare-backend
+    build:
+      context: ./airfare_backend
+      target: development
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://neondb_owner:npg_n5X4eWVJybqI@ep-wandering-waterfall-a112knmz-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+      - PORT=5000
+      - CORS_ORIGIN=http://localhost:3000
+      - JWT_SECRET=PLAYSUPER
+    volumes:
+      - ./airfare_backend:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - app-network
+    depends_on:
+      - network-container
+    command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run start:dev"
+    restart: unless-stopped
+
+  frontend:
+    container_name: airfare-frontend
+    build:
+      context: ./airfare_frontend
+      target: development
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_BACKEND_API=http://airfare-backend:5000
+      # Add any other environment variables your frontend needs
+    volumes:
+      - ./airfare_frontend:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+    networks:
+      - app-network
+    depends_on:
+      - backend
+    command: npm run dev
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
