@@ -1,4 +1,4 @@
-import Connections from "@/app/Components/Connections";
+import Connections from "../../../Components/Connections";
 import React from "react";
 
 export const dynamic = "force-dynamic";

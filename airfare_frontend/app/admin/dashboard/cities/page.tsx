@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import City from "@/app/Components/City";
+import City from "../../../Components/City";
 import { Suspense } from "react";
 
 const Page = async () => {

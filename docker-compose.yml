@@ -20,7 +20,7 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://neondb_owner:npg_n5X4eWVJybqI@ep-wandering-waterfall-a112knmz-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       - PORT=5000
-      - CORS_ORIGIN=http://localhost:3000
+      - CORS_ORIGIN=http://localhost:3000,http://airfare-frontend:3000
       - JWT_SECRET=PLAYSUPER
     volumes:
       - ./airfare_backend:/usr/src/app
@@ -41,7 +41,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_BACKEND_API=http://airfare-backend:5000
+      - NEXT_PUBLIC_BACKEND_API=http://localhost:5000
       # Add any other environment variables your frontend needs
     volumes:
       - ./airfare_frontend:/usr/src/app
