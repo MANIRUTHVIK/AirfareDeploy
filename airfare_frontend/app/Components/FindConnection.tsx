@@ -131,7 +131,7 @@ const FindConnection: React.FC<FindConnectionProps> = ({
         <div className="bg-black/30 backdrop-blur-xl p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-2xl border border-white/10">
           <div className="text-center mb-6 sm:mb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              Find Your Perfect Flight
+              Find Your Perfect Flight with Playsuper Guy
             </h1>
             <p className="text-slate-400 mt-2 text-sm sm:text-base lg:text-lg">
               Your journey begins with a single search.
