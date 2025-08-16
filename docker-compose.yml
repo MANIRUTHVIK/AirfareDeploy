@@ -29,7 +29,7 @@ services:
     depends_on:
       - db 
     env_file:
-    - ./backend/.env
+    - ./airfare_backend/.env
     command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run start:dev"
     restart: unless-stopped
 
