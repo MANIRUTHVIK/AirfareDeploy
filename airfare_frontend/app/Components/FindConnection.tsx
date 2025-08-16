@@ -134,7 +134,7 @@ const FindConnection: React.FC<FindConnectionProps> = ({
               Find Your Perfect Flight
             </h1>
             <p className="text-slate-400 mt-2 text-sm sm:text-base lg:text-lg">
-              Your journey begins with a single search.
+              Your journey begins with a single search by playsuper.
             </p>
           </div>
 
