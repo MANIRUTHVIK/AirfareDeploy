@@ -29,7 +29,7 @@ services:
     depends_on:
       - db 
     env_file:
-    - ./airfare_backend/.env
+      - ./airfare_backend/.env
     command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run start:dev"
     restart: unless-stopped
 
@@ -40,11 +40,10 @@ services:
       target: development
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=development
-      - NEXT_PUBLIC_BACKEND_API=http://51.20.77.166:5000
     depends_on:
       - backend
+    env_file:
+      - ./airfare_frontend/.env
     command: npm run dev
     restart: unless-stopped
 
