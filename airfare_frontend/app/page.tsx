@@ -15,11 +15,10 @@ async function getCities() {
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        next: { revalidate: 3600 }, // Cache for 1 hour
+        next: { revalidate: 3600 },
       }
     );
     if (!response.ok) {
-      // Return a soft error; the component can handle an empty array
       console.error("Failed to fetch city list.");
       return { cities: [], error: "Could not load city data." };
     }
@@ -37,7 +36,6 @@ async function getCities() {
 export default async function Home() {
   const { cities, error } = await getCities();
 
-  // Determine initial city values on the server to prevent hydration mismatch
   let initialFromCity = "";
   let initialToCity = "";
 
@@ -53,13 +51,12 @@ export default async function Home() {
   return (
     <div className="bg-black">
       <Navbar />
-      <main>
+      <main className="pt-20 sm:pt-24">
         <FindConnection
           initialCities={cities}
           initialFromCity={initialFromCity}
           initialToCity={initialToCity}
         />
-        {/* You can add more sections like "About" here if needed */}
       </main>
       <ContactUs />
     </div>
