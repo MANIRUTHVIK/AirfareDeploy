@@ -1,4 +1,4 @@
-name: airfare-app
+version: "3.9"
 
 services:
   network-container:
@@ -8,6 +8,7 @@ services:
     networks:
       - app-network
     restart: unless-stopped
+
   backend:
     container_name: airfare-backend
     hostname: airfare-backend
@@ -41,8 +42,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_BACKEND_API=http://localhost:5000
-      # Add any other environment variables your frontend needs
+      - NEXT_PUBLIC_BACKEND_API=http://51.20.77.166:5000
     volumes:
       - ./airfare_frontend:/usr/src/app
       - /usr/src/app/node_modules
