@@ -1,14 +1,6 @@
-version: "3.9"
+
 
 services:
-  network-container:
-    container_name: airfare-network
-    image: alpine:latest
-    command: sh -c "while true; do sleep 3600; done"
-    networks:
-      - app-network
-    restart: unless-stopped
-
   backend:
     container_name: airfare-backend
     hostname: airfare-backend
@@ -17,10 +9,8 @@ services:
       target: development
     ports:
       - "5000:5000"
-    networks:
-      - app-network
     depends_on:
-      - network-container
+      - frontend  # optional if you need backend to wait for frontend
     command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run start:dev"
     restart: unless-stopped
 
@@ -34,16 +24,8 @@ services:
     environment:
       - NODE_ENV=development
       - NEXT_PUBLIC_BACKEND_API=http://51.20.77.166:5000
-    networks:
-      - app-network
     depends_on:
       - backend
     command: npm run dev
     restart: unless-stopped
 
-networks:
-  app-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.30.0.0/16
