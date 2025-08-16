@@ -9,8 +9,6 @@ services:
       target: development
     ports:
       - "5000:5000"
-    depends_on:
-      - frontend  # optional if you need backend to wait for frontend
     command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run start:dev"
     restart: unless-stopped
 
