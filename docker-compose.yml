@@ -1,6 +1,23 @@
-
+version: "3.9"
 
 services:
+  db:
+    image: postgres:15-alpine
+    container_name: airfare-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: airfare
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   backend:
     container_name: airfare-backend
     hostname: airfare-backend
@@ -9,6 +26,10 @@ services:
       target: development
     ports:
       - "5000:5000"
+    depends_on:
+      - db 
+    env_file:
+      - ./airfare_backend/.env
     command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run start:dev"
     restart: unless-stopped
 
@@ -19,11 +40,12 @@ services:
       target: development
     ports:
       - "3000:3000"
-    environment:
-      - NODE_ENV=development
-      - NEXT_PUBLIC_BACKEND_API=http://51.20.77.166:5000
     depends_on:
       - backend
+    env_file:
+      - ./airfare_frontend/.env
     command: npm run dev
     restart: unless-stopped
 
+volumes:
+  db_data:
