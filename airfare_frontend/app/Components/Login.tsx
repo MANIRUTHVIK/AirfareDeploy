@@ -14,12 +14,12 @@ const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const token = Cookies.get("access_token");
-    if (token) {
-      router.push("/admin/dashboard/cities");
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   const token = Cookies.get("access_token");
+  //   if (token) {
+  //     router.push("/admin/dashboard/cities");
+  //   }
+  // }, [router]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +47,6 @@ const LoginPage: React.FC = () => {
       toast.error(error || "Login failed.");
     } finally {
       setLoading(false);
-      // Clearing fields on failed attempt is optional, let's keep them for user convenience
     }
   };
 

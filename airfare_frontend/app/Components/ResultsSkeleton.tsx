@@ -6,9 +6,7 @@ import { Plane } from "lucide-react";
 const ResultsSkeleton = () => (
   // The main container that holds all skeleton elements, matching the layout of the real results.
   <div className="mt-10 space-y-6 animate-fade-in-up">
-    {/* SkeletonTheme provides the base and highlight colors for the shimmer effect.
-      These colors are chosen to match the dark, slate-based UI.
-    */}
+    {/* SkeletonTheme provides the base and highlight colors for the shimmer effect.    */}
     <SkeletonTheme baseColor="#1e293b" highlightColor="#334155">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* We map over an array to generate multiple skeleton cards, creating a realistic loading state. */}
