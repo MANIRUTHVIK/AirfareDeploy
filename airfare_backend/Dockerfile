@@ -58,11 +58,4 @@ EXPOSE 5000
 # Start the application
 CMD ["node", "dist/main.js"]
 
-# Expose API port
-EXPOSE 5000
 
-# Start the application
-CMD ["node", "dist/main.js"]
-
-EXPOSE 5000
-CMD ["node", "dist/main.js"]
