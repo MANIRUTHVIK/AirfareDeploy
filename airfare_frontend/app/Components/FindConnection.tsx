@@ -166,7 +166,7 @@ const FindConnection: React.FC<FindConnectionProps> = ({
 
             <div className="sm:col-span-1 lg:col-span-2">
               <label className="block text-white text-sm font-medium mb-2">
-                <Filter></Filter>
+                Filter
               </label>
               <div className="flex items-center bg-slate-900/70 border border-slate-700 rounded-lg p-1">
                 {["Fastest", "Cheapest"].map((option) => (
