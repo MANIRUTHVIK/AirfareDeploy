@@ -6,9 +6,8 @@ import Image from "next/image";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast, Toaster } from "react-hot-toast";
-import LoadingTest from "./LoadingTest"; // Adjust path if needed
+import LoadingTest from "./LoadingTest";
 
-// Define the CityType interface locally if it's not in a shared file
 interface CityType {
   id: number;
   name: string;

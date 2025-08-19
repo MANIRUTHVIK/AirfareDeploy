@@ -145,7 +145,10 @@ const FindConnection: React.FC<FindConnectionProps> = ({
             />
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 items-end">
+          <div
+            suppressHydrationWarning
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 items-end"
+          >
             <div className="sm:col-span-2 lg:col-span-4">
               <label className="block text-white text-sm font-medium mb-2">
                 From

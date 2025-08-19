@@ -76,13 +76,13 @@ const ConnectionsPage = () => {
   const router = useRouter();
   const token = Cookies.get("access_token");
 
-  useEffect(() => {
-    if (!token) {
-      router.push("/admin/login");
-      return;
-    }
-    fetchCities();
-  }, [token, router]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     router.push("/admin/login");
+  //     return;
+  //   }
+  //   fetchCities();
+  // }, [token, router]);
 
   const fetchCities = async () => {
     try {
