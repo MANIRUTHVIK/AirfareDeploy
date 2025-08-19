@@ -130,7 +130,7 @@ const FindConnection: React.FC<FindConnectionProps> = ({
       <div className="relative z-10 max-w-5xl mx-auto w-full animate-fade-in-up">
         <div className="bg-black/30 backdrop-blur-xl p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-2xl border border-white/10">
           <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+            <h1 className="text-2xl m:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Find Your Perfect Flight
             </h1>
             <p className="text-slate-400 mt-2 text-sm sm:text-base lg:text-lg">
@@ -163,7 +163,7 @@ const FindConnection: React.FC<FindConnectionProps> = ({
 
             <div className="sm:col-span-1 lg:col-span-2">
               <label className="block text-white text-sm font-medium mb-2">
-                Filter
+                <Filter></Filter>
               </label>
               <div className="flex items-center bg-slate-900/70 border border-slate-700 rounded-lg p-1">
                 {["Fastest", "Cheapest"].map((option) => (
