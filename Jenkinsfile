@@ -59,13 +59,7 @@ EOL
         '''
     }
 }
-
-        stage('Docker Login') {
-            steps {
-                sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
-            }
-        }
-        stage('Remove Old Containers & Images') {
+stage('Remove Old Containers & Images') {
             steps {
                 sh '''
                     docker rm -f airfare-backend || true
@@ -74,6 +68,11 @@ EOL
                     docker rmi -f $DOCKER_USER/playsuper_backend:latest || true
                     docker rmi -f $DOCKER_USER/playsuper_frontend:latest || true
                 '''
+            }
+        }
+        stage('Docker Login') {
+            steps {
+                sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
             }
         }
         stage('Push Images to DockerHub') {
