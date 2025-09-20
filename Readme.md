@@ -88,5 +88,8 @@ sudo systemctl status jenkins
 
 # username and password
 
-saikumar
-saikumar
+# change the ip's
+# .env
+# main.ts
+# docker-compose
+# jenkines 
